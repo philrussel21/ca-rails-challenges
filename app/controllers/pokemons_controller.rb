@@ -40,7 +40,6 @@ class PokemonsController < ApplicationController
     params[:description] = poke_desc(params[:name])
     params[:img] = "https://pokeres.bastionbot.org/images/pokemon/#{params[:order]}.png"
     params[:types] = poke_types(params[:name])
-    # params[:type_colour] = poke_type_colour(params[:types])
     @pokemon = params
   end
 
@@ -77,18 +76,27 @@ class PokemonsController < ApplicationController
     response['types'].each do |type|
       poke_types.push(type['type']['name'])
     end
+
+    #assigns color depending on type
+    colours_to_type = {
+      'fire' => 'red',
+      'grass' => 'green',
+      'poison' => 'purple',
+      'water' => 'blue',
+      'electric' => 'yellow',
+      'bug' => 'green',
+      'ground' => 'brown',
+      'psychic' => 'pink'
+    }
+
+    poke_types = poke_types.map do |type|
+      if colours_to_type.has_key?(type)
+        type = {type => colours_to_type[type]}
+      else
+        type = {type => 'gray'}
+      end
+    end
     poke_types
+
   end
-
-  # def poke_type_colour(types_arr)
-  #   colours_to_type = {
-  #     'fire' => 'red'
-  #   }
-  #   types_arr.each do |type|
-  #     if colours_to_type.has_key?(type)
-
-  #     end
-  #   end
-  # end
-
 end

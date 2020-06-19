@@ -22,7 +22,7 @@
     <h5 class="card-title">#<%=@pokemon[:order]%>  <%=@pokemon[:name]%></h5>
     <h6 class="card-subtitle mb-2 text-muted">
       <%@pokemon[:types].each do |type|%>
-        <%=type.capitalize + " "%>
+        <span style="color:<%=type.values[0]%>"><%=type.keys[0].capitalize + " "%></span>
       <%end%>
     </h6>
     <p class="card-text"><%=@pokemon[:description]%></p>
