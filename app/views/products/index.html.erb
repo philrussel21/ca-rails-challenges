@@ -1,0 +1,10 @@
+<h1>Hotel Products</h1>
+
+
+<h2>Products</h2>
+<ul>
+<% @products.each do |product|%>
+  <li><%= product %></li>
+<%end%>
+</ul>
+<p>Total Number of items: <%=@products.count%></p>

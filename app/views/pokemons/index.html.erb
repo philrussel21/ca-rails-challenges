@@ -1,0 +1,8 @@
+<h1>All Pokemons</h1>
+
+<% @pokemons.each do |pokemon| %>
+  <h2><%=link_to pokemon[:name], pokemons_show_path(pokemon)%></h2>
+  <p><%=pokemon[:order]%></p>
+  <%= link_to image_tag(pokemon[:img]), pokemons_show_path(pokemon) %>
+  <hr>
+<%end%>

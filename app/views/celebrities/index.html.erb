@@ -1,0 +1,5 @@
+<h1>Celebrities staying at Hotel Transylvania</h1>
+
+<%@celebrities.each do |celebrity|%>
+  <li class="text-center"><%= link_to celebrity['name'], celeb_show_path(celebrity)%></li>
+<%end%>
